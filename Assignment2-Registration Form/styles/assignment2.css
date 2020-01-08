@@ -1,0 +1,137 @@
+/*
+    Heuijin Ko(8187452)
+    Stylesheet for Assginment2
+    Validate input fields and express as regular patterns.
+*/
+body {
+    width: 900px;
+    margin: 30px auto;
+    font-size:14px;
+    font-family:Helvetica,Arial,sans-serif;
+}
+.container{
+    width: 700px;
+    margin: 5px auto;
+    padding: 30px;
+    border: solid 1px rgb(66, 66, 148);
+}
+fieldset{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+fieldset label{
+	margin-right: 40px;
+}
+
+fieldset input{
+	margin-right: 10px;
+}
+/* a Line */
+.row{
+    margin-left:-15px;
+    margin-right:-15px;
+}
+.row:after,
+.row:before{
+    content:"";
+    display:block;
+}
+
+.row:after{clear:both}
+
+.width45{
+    width:45% !important;
+}
+ /* Label for whole line */
+.form-item{
+    margin-bottom:5px;    
+    padding-left:20px;
+}
+
+ /* Label for half line*/
+.form-group{
+    width: 100%;
+    margin-left: 5px;
+    margin-bottom:20px;       
+    padding-left:15px;   
+    float:left;    
+}
+
+.form-control{
+    font-size:14px;
+    line-height:1.42857;
+    color:#9b0787
+}
+.form-control{
+    width:97%;
+    height:30px;
+    padding:5px 10px;
+    margin-top:5px;         /* gap between label and control */
+    border:1px solid #cccccc;
+    border-radius:0;
+    box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
+}
+.errMsg{
+    color: red;
+}
+.style-select select{
+    width:340px;
+    height:41px;
+    padding:5px 30px 5px 10px;
+    margin-top:5px;         /* gap between label and control */
+    border:1px solid #cccccc;
+    border-radius:0;
+    box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
+    color:#9b0787
+}
+    
+.reduced-margin{
+    margin-bottom:20px;
+    margin-top:20px
+}
+.submit, .reset{
+    clear:left;
+    float: right;
+    color:#ffffff;
+    border:1px solid #cccccc;
+    background-color:#3071a9;
+    width: 200px;
+    height:35px;
+    font-size:16px;
+    margin-right: 20px;
+}
+
+.reset{
+    background-color:#aec1d1 !important;
+    color: #063761;
+}
+.form-header{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-left: 70px;
+    margin-right: 70px;
+    font-size: 150%;
+    font-weight: bold;
+}
+h1{
+	font-size: 180%;
+	text-align: center;
+}
+h2{
+	font-size: 110%;
+    text-align: center;
+    
+}
+h3{
+	font-size: 80%;
+    text-align: right;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.indicator{    
+    vertical-align: middle;
+    color: red;
+    font-weight: bold;
+    font-family:calibri;
+}

@@ -1,0 +1,58 @@
+/*
+    Heuijin Ko(8187452)
+    Stylesheet for Assginment1
+    Computes the sum and average of entered even/odd number respectively.
+*/
+body {
+    width: 270px;
+    margin: 30px auto;
+    font-size: 120%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h2{
+	font-size: 120%;
+	text-align: center;
+}
+h3{
+	font-size: 90%;
+	text-align: right;
+}
+p{    
+    font-size: 90%;
+}
+table{
+    text-align: center;
+    border-collapse: collapse;
+    font-size: 90%;
+}
+th{
+    background: #f49e42;        /*#FCEEEE*/;
+    border:1px solid #ddd; 
+    height: 30px;
+}
+tr, td{
+    border:1px solid #ddd;            
+    text-align: center;
+}
+td{
+    width: 90px;
+    height: 30px;
+}
+td:first-child{
+    font-weight: bold;
+    width: 80px;
+}
+tr:nth-last-child(1), 
+tr:nth-last-child(2) { 
+    background:rgb(1, 46, 21);
+    color: white;
+}
+tr:nth-last-child(3) { 
+    background:#d3b56e;
+    color: white;
+}
+.msg{
+    color: red;
+    font-weight: bold;
+    font-family:calibri;
+}

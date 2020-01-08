@@ -1,0 +1,177 @@
+<!--
+    PROG1800-Dynamic Web Programming
+    Heuijin Ko(8187452)
+    Assignment 2
+    Validate input fields and express as regular patterns.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Assignment2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/assignment2.css" />
+    <script src="scripts/assignment2.js"></script>
+</head>
+<body onload="document.getElementById('firstname').focus();">  
+    <div class="form-header">    
+            <h2>Assignment 2</h2>
+            <h3>Heuijin Ko</h3>             
+    </div>
+    <div class="container">               
+            <h1>Registration Form</h2> 
+    <form id="myForm" method="POST" onsubmit="return submitValidation();" action="">
+    <!-- Name block start -->
+    <div class="row">
+            <div class="form-group width45">
+                <label>All <span class="indicator">*</span> are required.</span>
+            </div>
+    </div>
+    <div class="row">
+        <div class="form-group width45">
+            <label>First Name </label><span class="indicator">*</span>
+            <input type="text" class="form-control" id="firstname" name="firstname" tabindex="1" onfocusout="isEmpty('firstname');"  />
+            <div id="firstname_error" class="errMsg" style="display:none">Please enter your first name.</div>
+        </div>
+        <div class="form-group width45">
+            <label>Last Name </label> <span class="indicator">*</span>
+            <input type="text" class="form-control" id="lastname" name="lastname" tabindex="2" onfocusout="isEmpty('lastname');"  />
+            <div id="lastname_error" class="errMsg" style="display:none">Please enter your last name.</div>
+        </div>
+    </div>
+    <!-- Name block end -->
+
+    <!-- address block start -->
+    <div class="row">
+        <div class="form-item width45">
+            <label>Street Address <span class="indicator">(Address Line 1 is .)</span></label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group width45">
+            <input type="text" class="form-control" id="address1" name="address1" tabindex="3" onfocusout="isEmpty('address1');" placeholder="Address Line 1 *" />
+            <div id="address1_error" class="errMsg" style="display:none">Please enter a street address.</div>
+            <label></label>
+        </div>
+        <div class="form-group width45">
+            <input type="text" class="form-control" id="address2" name="address2" tabindex="4" placeholder="Address Line 2"/>
+            <label for="address2"></label>
+        </div>
+    </div>         
+    
+    <div class="row">
+        
+        <!-- city block start -->
+        <div class="form-group width45">
+            <label>City </label><span class="indicator">*</span>
+            <input type="text" class="form-control" id="city" name="city" tabindex="5" onfocusout="isEmpty('city');" />
+            <div id="city_error" class="errMsg" style="display:none">Please enter a city name.</div>
+        </div>            
+        <!-- city block end -->    
+
+        <!-- province block start -->
+        <div class="form-group width45">
+            <label>Province </label><span class="indicator">*</span>
+            <div class="style-select">
+                <select id="province" name="province" onchange="changeProvince()" tabindex="6" onforminput="isEmpty('province');">
+                    <option value="">Select</option>
+                    <option value="AB">Alberta</option>
+                    <option value="BC">British Columbia</option>
+                    <option value="MB">Manitoba</option>
+                    <option value="NB">New Brunswick</option>
+                    <option value="NL">Newfoundland and Labrador</option>
+                    <option value="NT">Northwest Territories</option>
+                    <option value="NS">Nova Scotia</option>
+                    <option value="NU">Nunavut</option>
+                    <option value="ON">Ontario</option>
+                    <option value="PE">Prince Edward Island</option>
+                    <option value="QC">Quebec</option>
+                    <option value="SK">Saskatchewan</option>
+                    <option value="YT">Yukon</option>
+                </select>
+            </div>
+            <div id="province_error" class="errMsg" style="display:none">Please select a province name.</div>
+        </div>        
+        <!-- province block end -->
+    </div>
+
+    <div class="row">
+        <!-- postal code block start -->
+        <div class="form-group width45">
+            <label>Postal Code </label><span class="indicator">*</span>
+            <input type="text" class="form-control" id="postalcode" name="postalcode" tabindex="7" 
+                onfocusout="isAvaliablePC('postalcode');" placeholder="A0A 0A0" />
+            <div id="postalcode_error" class="errMsg" style="display:none">Please enter a valid Postal code using the format "A0A 0A0".</div>
+        </div>
+        <!-- city block end -->
+
+        <!-- phone block start -->
+        <div class="form-group width45">
+            <label>Phone Number </label><span class="indicator">*</span>
+            <input type="text" class="form-control" id="phone" name="phone" tabindex="8" onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.keyCode == 45)' onfocusout="phoneValidate('phone');" placeholder="555-555-5555">
+            <div id="phone_error" class="errMsg" style="display:none">Please enter a valid phone number using format 555-555-5555.</div>
+        </div>
+        <!-- phone block end -->
+    </div> 
+    <!-- All address block end -->
+    
+    <!-- email block start -->
+    <div class="row">
+        <div class="form-group  width45">
+            <labe>Email Address </label><span class="indicator">*</span>
+            <input type="email" class="form-control" name="email" id="email" tabindex="9" onfocusout="isValidEmail('email');"/>
+            <div id="email_error" class="errMsg" style="display:none">Please enter a valid email address using the format "test@example.ca".</div>
+        </div>
+        <div class="form-group width45">
+            <label>Confirm Email Address </label><span class="indicator">*</span>
+            <input type="email" class="form-control" name="emailConfirm" id="emailConfirm" tabindex="10" onfocusout="isValidEmail('emailConfirm');"  />                
+            <div id="emailConfirm_error" class="errMsg" style="display:none">Please enter a valid email address using the format "test@example.ca".</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group width45">
+            <div class="style-check">
+                <input type="checkbox" name="receiveMail" id="receiveMail" tabindex="11">
+                <label for="receiveMail" title='Receive email'>
+                    <span>Receive emails</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <!-- email block end -->
+
+    <!-- radio for gender block start -->        
+    <fieldset>
+            <legend> Gender <span class="indicator">*</span></legend>           
+                <div class="style-check"> 
+                    <input type="radio" id="male" name="gender" value="Male" onchange="setGender(value);">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="Female" onchange="setGender(value);">
+                    <label for="female">Female</label>
+                    <input type="radio" id="notindicate" name="gender" value="Not Indicate" onchange="setGender(value);">
+                    <label for="notindicate">Not indicate</label>
+                </div>
+    </fieldset>        
+    <div id="gender_error" class="errMsg" style="display:none">Please check one of genders.</div>
+    <!-- radio for gender block end -->
+
+    <!-- submit block start -->
+    <hr class="reduced-margin">
+    <div class="row">
+        <div class="form-item">
+            <!--input type="submit" class="submit btn-row" value="submit" onclick="submitValidation();" /-->
+            <input type="submit" class="submit btn-row" value="submit" />
+        </div>
+        <div class="form-item">
+            <input type="button" class="reset btn-row" value="reset" onclick="resetAll();"/>
+        </div>
+    </div>    
+    <!-- submit block end -->	
+    </form>
+</div>
+    <br/><br/>    
+    <p id="SubmitResult"></p>
+
+</body>
+</html>
